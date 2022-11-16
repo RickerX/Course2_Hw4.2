@@ -1,9 +1,9 @@
 public class Passport {
-    String passportNumber;
-    String surname;
-    String name;
-    String patronymic;
-    String dateOfBirth;
+    private final String passportNumber;
+    private final String surname;
+    private final String name;
+    private final String patronymic;
+    private final String dateOfBirth;
 
     public Passport(String passportNumber, String surname, String name, String patronymic, String dateOfBirth) {
         this.passportNumber = passportNumber;

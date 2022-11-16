@@ -13,12 +13,69 @@ public class Main {
     private static void separation() {
         System.out.println("=========================");
     }
+    private static void separationTwo() {
+        System.out.println("++++++++++++++++++++++++");
+    }
 
     private static final List<String> PRODUCT = List.of("Помидор","Банан","Апельсин","Яблоко","Киви","Молоко","Газировка",
             "Вода","Кофе","Соль","Ручка","Фонарик");
     private static final List<String> RECIPES = List.of("Плов", "Щи", "Жренная картошка", "Макароны с сыром", "Драники");
     public static void main(String[] args) {
+        taskOne();
+        separation();
+        taskRecipes();
+        separation();
+        taskTwo();
+        homeWorkTreeTaskOne();
+        separation();
+        homeWorkTreeTaskTwo();
+        separation();
+        homeWorkTreeTaskTree();
+    }
+    private static void printInfo(Car car) {
+        System.out.println("Информация по автомобилю " + car.getBrand() + " " + car.getModel());
+        System.out.println("Водители: " + car.getDrivers());
+        System.out.println("Механники: " + car.getMechanics());
+        System.out.println("Спонсоры: " + car.getSponsors());
+        System.out.println("");
+    }
 
+    public static void service(Car... cars) {
+        for (Car car : cars) {
+            serviceCars(car);
+        }
+
+    }
+
+    private static void serviceCars(Car car) {
+        if (car.service()) {
+            try {
+                throw new RuntimeException("Автомобиль не прошел Т/О " + " " + car.getBrand() + " " + car.getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private static void taskTwo() {
+        Set<Integer> number = new HashSet<>();
+
+        for (int i = 0; i < 19; i++) {
+            number.add(new Random().nextInt(1000));
+        }
+        for (Iterator<Integer> iterator = number.iterator(); iterator.hasNext();) {
+            if (iterator.next() % 2 != 0) {
+                iterator.remove();
+            }
+        }
+        System.out.println(number.size());
+        separationTwo();
+        for (Iterator<Integer> iterator = number.iterator(); iterator.hasNext();) {
+            System.out.println(iterator.next() + " ");
+        }
+    }
+
+    private static void taskOne() {
         Product pomidor = new Product("Помидор");
         Product banana = new Product("Банан");
         Product orange = new Product("Апельсин");
@@ -44,44 +101,18 @@ public class Main {
         product.add(salt);
         product.add(pen);
         product.add(flashlight);
-        System.out.println(Arrays.toString(product.toArray()));
-        separation();
+        for (Product p:product) {
+            System.out.println(p);
+        }
+    }
+
+    private static void taskRecipes() {
         Recipes plov = new Recipes("Рис,мясо,овощи", 1000, "Плов");
         System.out.println(RECIPES);
-        separation();
-        Set<Integer> intSet = new HashSet<>();
-        intSet.add(1);
-        intSet.add(2);
-        intSet.add(3);
-        intSet.add(4);
-        intSet.add(5);
-        intSet.add(6);
-        intSet.add(7);
-        intSet.add(8);
-        intSet.add(9);
-        intSet.add(10);
-        intSet.add(11);
-        intSet.add(12);
-        intSet.add(13);
-        intSet.add(14);
-        intSet.add(15);
-        intSet.add(16);
-        intSet.add(17);
-        intSet.add(18);
-        intSet.add(19);
-        intSet.add(20);
-        intSet.remove(1);
-        intSet.remove(3);
-        intSet.remove(5);
-        intSet.remove(7);
-        intSet.remove(9);
-        intSet.remove(11);
-        intSet.remove(13);
-        intSet.remove(15);
-        intSet.remove(17);
-        intSet.remove(19);
-        System.out.println(intSet);
-        separation();
+        System.out.println(plov);
+    }
+
+    private static void homeWorkTreeTaskOne() {
         Mechanic<PassengerCars> gena = new Mechanic<>("Гена", "Иванов", "Вольво-моторс");
         Mechanic<PassengerCars> dima = new Mechanic<>("Дима", "Иванов", "Вольво-bus");
         Mechanic<PassengerCars> timur = new Mechanic<>("Тимур", "Иванов", "Вольво-truck");
@@ -182,7 +213,6 @@ public class Main {
         for (Driver driver:drivers) {
             System.out.println(driver);
         }
-
         separation();
         Set<Car> carSet = new HashSet<>();
         carSet.add(volvo);
@@ -205,8 +235,9 @@ public class Main {
         for (Mechanic mechanic: mechanics) {
             System.out.println(mechanic);
         }
+    }
 
-        separation();
+    private static void homeWorkTreeTaskTwo() {
         Set<String> task = new HashSet<>();
         task.add("2 * 2");
         task.add("2 * 3");
@@ -216,15 +247,41 @@ public class Main {
         task.add("2 * 7");
         task.add("2 * 8");
         task.add("2 * 9");
-        task.add("2 * 10");
-        task.add("2 * 11");
-        task.add("2 * 12");
-        task.add("2 * 13");
-        task.add("2 * 14");
-        task.add("2 * 15");
-        task.add("2 * 16");
-        System.out.println(task);
-        separation();
+        task.add("3 * 3");
+        task.add("3 * 4");
+        task.add("3 * 5");
+        task.add("3 * 6");
+        task.add("3 * 7");
+        task.add("3 * 8");
+        task.add("3 * 9");
+        task.add("4 * 4");
+        task.add("4 * 5");
+        task.add("4 * 6");
+        task.add("4 * 7");
+        task.add("4 * 8");
+        task.add("4 * 9");
+        task.add("5 * 5");
+        task.add("5 * 6");
+        task.add("5 * 7");
+        task.add("5 * 8");
+        task.add("5 * 9");
+        task.add("6 * 6");
+        task.add("6 * 7");
+        task.add("6 * 8");
+        task.add("6 * 9");
+        task.add("7 * 7");
+        task.add("7 * 8");
+        task.add("7 * 9");
+        task.add("8 * 8");
+        task.add("8 * 9");
+        task.add("9 * 9");
+        for (String s:task) {
+            System.out.println(s);
+        }
+    }
+    // Не пойму как ограничить цикл
+
+    private static void homeWorkTreeTaskTree() {
         Passport ivanovPetrIvanivich = new Passport("4646_123456", "Иванов", "Петр", "Иванович", "30.11.1988");
         Passport ivanovAlexIvanivich = new Passport("4747_123456", "Иванов", "Алекс", "Иванович", "30.11.1989");
         Passport ivanovOlegIvanivich = new Passport("4848_123456", "Иванов", "Олег", "Иванович", "30.11.1989");
@@ -234,30 +291,6 @@ public class Main {
         passports.add(ivanovOlegIvanivich);
         for (Passport passport:passports) {
             System.out.println(passport);
-        }
-    }
-    private static void printInfo(Car car) {
-        System.out.println("Информация по автомобилю " + car.getBrand() + " " + car.getModel());
-        System.out.println("Водители: " + car.getDrivers());
-        System.out.println("Механники: " + car.getMechanics());
-        System.out.println("Спонсоры: " + car.getSponsors());
-        System.out.println("");
-    }
-
-    public static void service(Car... cars) {
-        for (Car car : cars) {
-            serviceCars(car);
-        }
-
-    }
-
-    private static void serviceCars(Car car) {
-        if (car.service()) {
-            try {
-                throw new RuntimeException("Автомобиль не прошел Т/О " + " " + car.getBrand() + " " + car.getModel());
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
         }
     }
 }

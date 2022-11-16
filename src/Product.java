@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
-    private String product;
-    private List productList;
+    private  String product;
+    private final List productList;
 
     public Product(String product) {
         checkProduct(product);
