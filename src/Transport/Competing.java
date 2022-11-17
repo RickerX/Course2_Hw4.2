@@ -5,5 +5,5 @@ public interface Competing {
 
     String bestLapTime();
 
-    String maxSpeed();
+    int maxSpeed();
 }

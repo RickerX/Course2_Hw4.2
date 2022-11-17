@@ -1,9 +1,9 @@
 package Transport;
 
 public class Mechanic<T extends Car> {
-    String firstName;
-    String lastName;
-    String company;
+    private final String firstName;
+    private final String lastName;
+    private final String company;
 
 
     public Mechanic(String firstName, String lastName, String company) {

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Passport {
     private final String passportNumber;
     private final String surname;
@@ -40,5 +42,18 @@ public class Passport {
                 " Имя: " + getName() +
                 " Отчество: " + getPatronymic() +
                 " Дата рождения: " + getDateOfBirth();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Passport)) return false;
+        Passport passport = (Passport) o;
+        return Objects.equals(passportNumber, passport.passportNumber) && Objects.equals(surname, passport.surname) && Objects.equals(name, passport.name) && Objects.equals(patronymic, passport.patronymic) && Objects.equals(dateOfBirth, passport.dateOfBirth);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(passportNumber, surname, name, patronymic, dateOfBirth);
     }
 }

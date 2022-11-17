@@ -37,7 +37,6 @@ public class Main {
         System.out.println("Водители: " + car.getDrivers());
         System.out.println("Механники: " + car.getMechanics());
         System.out.println("Спонсоры: " + car.getSponsors());
-        System.out.println("");
     }
 
     public static void service(Car... cars) {
@@ -48,31 +47,36 @@ public class Main {
     }
 
     private static void serviceCars(Car car) {
-        if (car.service()) {
-            try {
+        try {
+            if (!car.service()) {
                 throw new RuntimeException("Автомобиль не прошел Т/О " + " " + car.getBrand() + " " + car.getModel());
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
             }
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
         }
     }
 
     private static void taskTwo() {
         Set<Integer> number = new HashSet<>();
-
-        for (int i = 0; i < 19; i++) {
+        int lengthNumber = 19;
+        for (int i = 0; i < lengthNumber; i++) {
             number.add(new Random().nextInt(1000));
         }
-        for (Iterator<Integer> iterator = number.iterator(); iterator.hasNext();) {
-            if (iterator.next() % 2 != 0) {
-                iterator.remove();
+        {
+            Iterator<Integer> iterator = number.iterator();
+            while (iterator.hasNext()) {
+                if (iterator.next() % 2 != 0) {
+                    iterator.remove();
+                }
             }
         }
         System.out.println(number.size());
         separationTwo();
-        for (Iterator<Integer> iterator = number.iterator(); iterator.hasNext();) {
+        Iterator<Integer> iterator = number.iterator();
+        while (iterator.hasNext()) {
             System.out.println(iterator.next() + " ");
         }
+
     }
 
     private static void taskOne() {
@@ -238,59 +242,40 @@ public class Main {
     }
 
     private static void homeWorkTreeTaskTwo() {
+        int children = 15;
         Set<String> task = new HashSet<>();
-        task.add("2 * 2");
-        task.add("2 * 3");
-        task.add("2 * 4");
-        task.add("2 * 5");
-        task.add("2 * 6");
-        task.add("2 * 7");
-        task.add("2 * 8");
-        task.add("2 * 9");
-        task.add("3 * 3");
-        task.add("3 * 4");
-        task.add("3 * 5");
-        task.add("3 * 6");
-        task.add("3 * 7");
-        task.add("3 * 8");
-        task.add("3 * 9");
-        task.add("4 * 4");
-        task.add("4 * 5");
-        task.add("4 * 6");
-        task.add("4 * 7");
-        task.add("4 * 8");
-        task.add("4 * 9");
-        task.add("5 * 5");
-        task.add("5 * 6");
-        task.add("5 * 7");
-        task.add("5 * 8");
-        task.add("5 * 9");
-        task.add("6 * 6");
-        task.add("6 * 7");
-        task.add("6 * 8");
-        task.add("6 * 9");
-        task.add("7 * 7");
-        task.add("7 * 8");
-        task.add("7 * 9");
-        task.add("8 * 8");
-        task.add("8 * 9");
-        task.add("9 * 9");
-        for (String s:task) {
-            System.out.println(s);
+        for (int i = 0; i < children; i++) {
+            int numberOne = new Random().nextInt(10);
+            int numberTwo = new Random().nextInt(10);
+            Numbers numbers = new Numbers(numberOne, numberTwo);
+            task.add(numbers.toString());
+
         }
+
+        System.out.println(task);
+        System.out.println(task.size());
+
     }
-    // Не пойму как ограничить цикл
+
 
     private static void homeWorkTreeTaskTree() {
         Passport ivanovPetrIvanivich = new Passport("4646_123456", "Иванов", "Петр", "Иванович", "30.11.1988");
-        Passport ivanovAlexIvanivich = new Passport("4747_123456", "Иванов", "Алекс", "Иванович", "30.11.1989");
-        Passport ivanovOlegIvanivich = new Passport("4848_123456", "Иванов", "Олег", "Иванович", "30.11.1989");
+        Passport ivanovAlexIvanivich = new Passport("4747_123456", "Иванов", "Алекс", "Иванович", "30.12.1989");
+        Passport ivanovOlegIvanivich = new Passport("4848_123456", "Иванов", "Олег", "Иванович", "23.10.1989");
         Set<Passport> passports = new HashSet<>();
         passports.add(ivanovPetrIvanivich);
         passports.add(ivanovAlexIvanivich);
         passports.add(ivanovOlegIvanivich);
+        try {
+            if (ivanovPetrIvanivich.equals(ivanovAlexIvanivich) || ivanovPetrIvanivich.equals(ivanovOlegIvanivich) || ivanovOlegIvanivich.equals(ivanovAlexIvanivich)) {
+                throw new Exception("Данные одинаковые");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         for (Passport passport:passports) {
             System.out.println(passport);
         }
     }
+
 }

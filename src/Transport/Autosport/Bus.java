@@ -3,6 +3,8 @@ package Transport.Autosport;
 
 import Transport.Car;
 
+import java.util.Random;
+
 public class Bus extends Car {
 
     private Capacity capacity;
@@ -61,8 +63,8 @@ public class Bus extends Car {
     }
 
     @Override
-    public String maxSpeed() {
-        return "120 км/ч";
+    public int maxSpeed() {
+        return new Random().nextInt(200);
     }
 
 }

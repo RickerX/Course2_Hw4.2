@@ -2,6 +2,8 @@ package Transport.Autosport;
 
 import Transport.Car;
 
+import java.util.Random;
+
 public class PassengerCars extends Car {
 
     private TypeOfBody typeOfBody;
@@ -59,8 +61,9 @@ public class PassengerCars extends Car {
     }
 
     @Override
-    public String maxSpeed() {
-        return "160 км/ч";
+    public int maxSpeed() {
+        return new Random().nextInt(200);
     }
+
 
 }
